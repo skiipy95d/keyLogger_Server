@@ -1,0 +1,27 @@
+/* Estilo general del documento */
+body {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+  background-color: #333; /* Fondo oscuro para todo el cuerpo */
+  color: #00ff00; /* Texto verde */
+}
+
+/* Estilo del contenedor del visor */
+.contenedor {
+  border: 1px solid #ddd;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  background-color: #222; /* Fondo oscuro para el contenedor */
+}
+
+/* Estilo del visor de datos */
+#visor {
+  white-space: pre-wrap;        /* Preserva saltos de línea y espaciado */
+  font-family: monospace;       /* Fuente monoespaciada para código */
+  background-color: #000;       /* Fondo negro */
+  color: #00ff00;               /* Texto verde */
+  padding: 15px;
+  overflow-y: auto;             /* Permite scroll si el contenido excede la altura */
+  max-height: 644px;            /* Altura máxima del visor */
+}

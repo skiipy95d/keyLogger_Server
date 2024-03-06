@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visor de keylogs</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="contenedor">
+        <h1>Visor de keylogs</h1>
+        <p>Actualiza la página para ver los cambios en el archivo.</p>
+        <div id="visor"></div>
+        <button onclick="detenerProcesos()">Detener Procesos</button>
+    </div>
+
+    <script>
+        const visor = document.getElementById('visor');
+
+        function showKeylogs() {
+            fetch('/keylogs.json')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! Status: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    visor.innerHTML = '';
+                    for (const log of data) {
+                        const logItem = document.createElement('pre');
+                        logItem.textContent = `${log.timestamp}: ${log.key}`;
+                        visor.appendChild(logItem);
+                    }
+                })
+                .catch(error => console.error('Error al cargar el archivo JSON:', error));
+        }
+
+        function detenerProcesos() {
+        fetch('/detener-procesos', {
+            method: 'POST'
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+            return response.text();
+        })
+        .then(data => {
+            console.log(data);
+        })
+        .catch(error => console.error('Error al detener procesos:', error));
+    }
+
+        showKeylogs();
+    </script>
+</body>
+</html>
