@@ -18,7 +18,7 @@
 <ol>
 <li>Clonar el repositorio:</li>
 
-    git clone https://github.com/skipy95d/KeyLogger_server.git
+    git clone https://github.com/skiipy95d/keyLogger_Server.git
 
 <li>Instalar las dependencias:</li>
 
